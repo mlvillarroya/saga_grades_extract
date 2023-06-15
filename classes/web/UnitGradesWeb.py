@@ -10,12 +10,13 @@ class UnitGradesWeb(Evaluationweb):
         rows = rows[2:]
         for row in rows:
             cells = self.get_row_data_cells(row)
-            if len(cells) < 2: continue
+            if not cells or len(cells) < 2: continue
             names.append(cells[1].text)  
         return names
 
     def get_student_grades(self,row,unit_names):
             cells = self.get_row_data_cells(row)
+            if not cells: return False
             student_name = cells[0].text
             grades = []
             cells = self.search_elements_by_XPATH(GRADES_XPATH)

@@ -5,7 +5,7 @@ from exceptions.ElementNotClickable import ElementNotClickable
 import time
 
 class Baseweb:
-    def __init__(self,driver,title) -> None:
+    def __init__(self,driver,title):
         self.driver = driver
         if (driver.title != title):
             time.sleep(5)
@@ -76,6 +76,11 @@ class Baseweb:
         if len(results) == 0: return False
         else: return results[0]
 
+    def get_xpath_inside_element(self,element,xpath):
+        results = element.find_elements(By.XPATH,xpath)
+        if len(results) == 0: return False
+        else: return results[0]
+        
     def click_into_element(self,element):
         try:
             element.click()
@@ -85,3 +90,5 @@ class Baseweb:
     def click_go_back(self):
         self.search_and_click_by_XPATH("//input[@value=\"Enrere\"]")
         
+    def data_cell_content(self,cell):
+        return cell.text
