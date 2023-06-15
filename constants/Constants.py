@@ -1,0 +1,1 @@
+SAGA_URL = 'https://saga.xtec.cat/entrada'
