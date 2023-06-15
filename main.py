@@ -1,14 +1,14 @@
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-import time
 from dotenv import dotenv_values
 from constants import Constants
 from classes.web.Signin import Signin
 from classes.web.Evaluationweb import Evaluationweb
 from classes.web.ModuleListWeb import ModuleListWeb
 from classes.web.UnitGradesWeb import UnitGradesWeb
+from classes.grades.Classroom import Classroom
 
 secrets = dotenv_values(".env")
+classroom = Classroom()
 driver = webdriver.Edge()
 # ACCESS SAGA #
 driver.get(Constants.SAGA_URL)
@@ -30,7 +30,9 @@ for module in module_list_page.get_table_rows():
     module_list_page.go_to_module_grades(module)
     # UNIT GRADES #
     unit_grades_page = UnitGradesWeb(driver)
-    matrix = unit_grades_page.get_module_matrix()
+    module_matrix = unit_grades_page.get_module_matrix()
+    classroom.compute_module_matrix(module_matrix)
+    unit_grades_page.click_go_back()
     pass
 
 

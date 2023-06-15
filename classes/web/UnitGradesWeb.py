@@ -17,11 +17,11 @@ class UnitGradesWeb(Evaluationweb):
     def get_student_grades(self,row,unit_names):
             cells = self.get_row_data_cells(row)
             student_name = cells[0].text
-            grades = {}
+            grades = []
             cells = self.search_elements_by_XPATH(GRADES_XPATH)
             cells = cells[0:len(unit_names)]
             for i,cell in enumerate(cells):
-                grades[unit_names[i]] = cell.get_attribute("value")
+                grades.append([unit_names[i],cell.get_attribute("value")])
             return [student_name,grades]
 
     def get_module_matrix(self):

@@ -82,3 +82,6 @@ class Baseweb:
         except:
             raise ElementNotClickable(element)
         
+    def click_go_back(self):
+        self.search_and_click_by_XPATH("//input[@value=\"Enrere\"]")
+        
