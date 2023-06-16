@@ -8,7 +8,7 @@ class Baseweb:
     def __init__(self,driver,title):
         self.driver = driver
         if (driver.title != title):
-            time.sleep(5)
+            time.sleep(10)
             if (driver.title != title): raise DifferentPageException(driver.current_url)
 
     def go_to_first_frame(self):
@@ -76,11 +76,16 @@ class Baseweb:
         if len(results) == 0: return False
         else: return results[0]
 
-    def get_xpath_inside_element(self,element,xpath):
+    def get_element_inside_element_by_xpath(self,element,xpath):
         results = element.find_elements(By.XPATH,xpath)
         if len(results) == 0: return False
         else: return results[0]
-        
+
+    def get_elements_inside_element_by_xpath(self,element,xpath):
+        results = element.find_elements(By.XPATH,xpath)
+        if len(results) == 0: return False
+        else: return results        
+
     def click_into_element(self,element):
         try:
             element.click()

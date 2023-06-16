@@ -36,5 +36,5 @@ class Evaluationweb(Baseweb):
     def go_to_group(self,group_name):
         self.go_to_second_frame()
         group_row = self.search_group_row(group_name)
-        group_icon = self.get_xpath_inside_element(group_row,GROUP_ICON_XPATH)
+        group_icon = self.get_element_inside_element_by_xpath(group_row,GROUP_ICON_XPATH)
         if group_icon: self.click_into_element(group_icon)

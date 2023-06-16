@@ -19,5 +19,5 @@ class StudentListWeb(Evaluationweb):
     def click_into_student(self,student_name):
         student_row_xpath = STUDENT_ROW_XPATH.replace("STUDENT_NAME",student_name)
         student_row = self.search_element_by_XPATH(student_row_xpath)
-        avaluation_icon = self.get_xpath_inside_element(student_row,AVALUATION_ICON_XPATH)
+        avaluation_icon = self.get_element_inside_element_by_xpath(student_row,AVALUATION_ICON_XPATH)
         if avaluation_icon: self.click_into_element(avaluation_icon)   
