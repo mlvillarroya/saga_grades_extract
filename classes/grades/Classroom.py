@@ -20,3 +20,6 @@ class Classroom:
             for unit in row[1]:
                 print(unit[0])
                 print(unit[1])
+
+    def get_modules_names_from_first_student(self):
+        return self.students[list(self.students.keys())[0]].get_module_names()
