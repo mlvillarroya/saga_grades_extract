@@ -4,7 +4,6 @@ from classes.web.Signin import Signin
 from classes.web.Evaluationweb import Evaluationweb
 from classes.web.StudentListWeb import StudentListWeb
 from classes.web.StudentGradesWeb import StudentGradesWeb
-import json
 
 from classes.grades.Classroom import Classroom
 from miscellaneous.Misc import Misc
@@ -39,21 +38,17 @@ secrets = dotenv_values(".env")
 # driver.quit()
 
 # # CONVERTING GRADES INTO JSON #
-# jsonFile = open("grades.json", "w")
-# classgrades_json = json.dumps(class_grades,ensure_ascii=False)
-# jsonFile.write(classgrades_json)
-# jsonFile.close()
+# Misc.objecttojsonfile(class_grades,'grades.json')
 # # CONVERTING STUDENTS INTO JSON #
+# Misc.objecttojsonfile(students_list,'students.json')
 # jsonFile = open("students.json", "w")
 # students_json = json.dumps(students_list,ensure_ascii=False)
 # jsonFile.write(students_json)
 # jsonFile.close()
 
 # WHILE TESTING, LOAD DATA FROM FILE #
-file = open("grades.json")
-class_grades = json.load(file)
-file = open("students.json")
-students_list = json.load(file)
+class_grades = Misc.jsonfiletoobject('grades.json')
+students_list = Misc.jsonfiletoobject('students.json')
 ######################################
 
 group_name = secrets['GROUP_NAME'] or 'unnamed'
