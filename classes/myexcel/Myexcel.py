@@ -1,6 +1,7 @@
 from openpyxl import Workbook 
 from openpyxl.worksheet.dimensions import ColumnDimension, DimensionHolder 
 from openpyxl.utils import get_column_letter
+from openpyxl.comments import Comment
 
 class Myexcel:
     def __init__(self,file_name,sheet_name = 'Sheet') -> None:
@@ -14,9 +15,11 @@ class Myexcel:
         col = 2
         for module,units in module_unit_list:
             start_col = col
-            self.ws.cell(row=1, column=col).value = module
+            self.ws.cell(row=1, column=col).value = module[:3]
+            self.ws.cell(row=1, column=col).comment = Comment(module,'admin')
             for unit in units:
-                self.ws.cell(row=2, column=col).value = unit
+                self.ws.cell(row=2, column=col).value = unit[:3]
+                self.ws.cell(row=2, column=col).comment = Comment(unit,'admin')
                 col += 1
             end_col = col - 1
             self.ws.merge_cells(start_row=1, start_column=start_col, end_row=1, end_column=end_col)
@@ -24,16 +27,15 @@ class Myexcel:
     def create_first_column_with_student_names(self,student_list):
         for row,student in enumerate(student_list,start=3):
             self.ws.cell(row=row, column=1).value = student
-            # self.adjust_col_dimensions()
+        self.adjust_col_dimensions(1)
 
-    # def adjust_col_dimensions(self):        
-    #     dims = {}
-    #     for row in self.ws.rows:
-    #         for cell in row:
-    #             if cell.value:
-    #                 dims[cell.column] = max((dims.get(cell.column, 0), len(str(cell.value))))    
-    #     for col, value in dims.items():
-    #         self.ws.column_dimensions[get_column_letter(col)].width = value
+    def adjust_col_dimensions(self,col_number):
+        col_letter = get_column_letter(col_number)        
+        dim = 0        
+        for cell in self.ws[col_letter]:
+            if cell.value:
+                dim = max(dim, len(str(cell.value)))    
+        self.ws.column_dimensions[col_letter].width = dim
 
     def save_file(self):
         self.wb.save(self.file_name)
