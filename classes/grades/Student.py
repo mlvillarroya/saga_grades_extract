@@ -30,3 +30,9 @@ class Student:
         for module in self.moduls:
             names.append(module)
         return names
+
+    def get_module_and_unit_names(self):
+        names = []
+        for module in self.moduls:
+            names.append([module,self.moduls[module].get_unit_names()])
+        return names

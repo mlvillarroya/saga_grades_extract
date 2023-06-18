@@ -1,6 +1,5 @@
 from selenium import webdriver
 from dotenv import dotenv_values
-from constants import Constants
 from classes.web.Signin import Signin
 from classes.web.Evaluationweb import Evaluationweb
 from classes.web.StudentListWeb import StudentListWeb
@@ -10,7 +9,8 @@ import json
 from classes.grades.Classroom import Classroom
 from miscellaneous.Misc import Misc
 
-from openpyxl import Workbook   
+from classes.myexcel.Myexcel import Myexcel
+
 secrets = dotenv_values(".env")
 # driver = webdriver.Edge()
 # # ACCESS SAGA #
@@ -48,11 +48,11 @@ for i,student in enumerate(students_list):
     student = classroom.get_student(student)
     student.get_grades(class_grades[i])
 
-wb = Workbook()
-ws = wb['Sheet']
-ws.title = group_name
-module_names = classroom.get_modules_names_from_first_student()
-for col, val in enumerate(module_names, start=2):
-    ws.cell(row=1, column=col).value = val
-wb.save('grades.xlsx')
+myexcel = Myexcel('grades.xlsx',group_name)
+module_unit_names = classroom.get_modules_unit_names_from_first_student()
+classroom_students = classroom.get_student_names()
+myexcel.create_module_header_with_modules_units(module_unit_names)
+myexcel.create_first_column_with_student_names(classroom_students)
+myexcel.save_file()
+
 pass

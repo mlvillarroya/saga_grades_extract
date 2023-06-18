@@ -1,6 +1,4 @@
 from classes.web.Baseweb import Baseweb
-from constants import Constants
-
 
 TEACHER_MENU_ID = 'menu1'
 GROUPS_MENU_ID = 'tab10202'

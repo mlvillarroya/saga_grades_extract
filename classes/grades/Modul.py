@@ -13,3 +13,9 @@ class Modul:
             unit = Unit(unit_name)
             self.units[unit_name] = unit
             return unit
+    
+    def get_unit_names(self):
+        names = []
+        for unit in self.units:
+            names.append(unit)
+        return names
