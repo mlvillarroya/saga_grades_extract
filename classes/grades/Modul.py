@@ -1,12 +1,11 @@
 from classes.grades.Unit import Unit
+from classes.grades.BasicGrade import BasicGrade
 
-class Modul:
-    def __init__(self,name = 'unnamed') -> None:
-        self.name = name
+class Modul(BasicGrade):
+    def __init__(self, name = 'unnamed', grade = '') -> None:
         self.units = {}
+        super().__init__(name,grade)
     
-    def get_name(self):
-        return self.name
     def get_unit(self,unit_name : str):
         if unit_name in self.units: return self.units[unit_name]
         else:
