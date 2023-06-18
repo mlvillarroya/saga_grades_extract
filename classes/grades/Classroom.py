@@ -15,7 +15,7 @@ class Classroom:
             self.students[student_name] = student
             return student
         
-    def get_modules_unit_names_from_first_student(self):
+    def get_modules_unit_names_hours_from_first_student(self):
         return self.students[list(self.students.keys())[0]].get_module_and_unit_names_hours()
     
     def get_student_names(self):
@@ -23,3 +23,17 @@ class Classroom:
         for student in self.students:
             names.append(student)
         return names
+    
+    def extract_unit_grades(self,student,module_unit_names_hours):
+        student = self.get_student(student)
+        grades = []
+        for module,unit_hours in module_unit_names_hours:
+            modul = student.get_modul(module)
+            for unit,hours in unit_hours:
+                grades.append(modul.get_unit(unit).get_grade())
+        return grades
+    
+    def build_classroom_structure_from_students_amb_grades(self,students_list,class_grades):
+        for i,student in enumerate(students_list):
+            student = self.get_student(student)
+            student.set_all_grades(class_grades[i])

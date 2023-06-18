@@ -13,7 +13,7 @@ class Student:
             self.moduls[modul_name] = modul
             return modul
         
-    def get_grades(self,grades):
+    def set_all_grades(self,grades):
         if not grades[0][0].startswith('M'): raise Exception("First grade must be a module")
         modul = self.get_modul(grades[0][0])
         modul.set_grade(grades[0][1])
