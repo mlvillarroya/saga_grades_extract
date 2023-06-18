@@ -12,38 +12,50 @@ from miscellaneous.Misc import Misc
 from classes.myexcel.Myexcel import Myexcel
 
 secrets = dotenv_values(".env")
-saga_url = secrets['SAGA_URL'] or ''
-if secrets == '': raise Exception('URL not provided')
-driver = webdriver.Edge()
-# ACCESS SAGA #
-driver.get(saga_url)
-# SIGN IN PAGE #
-signin_page = Signin(driver,secrets)
-signin_page.do_login()
-print(driver.title)
-# ENTER EVALUATION PAGE #
-evaluation_page = Evaluationweb(driver)
-evaluation_page.go_to_teacher_menu()
-evaluation_page.go_to_groups_menu()
-evaluation_page.go_to_group(secrets['GROUP_NAME'])
-# ENTER STUDENT LIST #
-student_list_page = StudentListWeb(driver)
-students_list = student_list_page.get_student_list()
-class_grades = []
-for i in range(len(students_list)):
-    student_list_page.click_into_student(students_list[i])
-    # ENTER STUDENT'S GRADES #
-    student_grades_web = StudentGradesWeb(driver)
-    class_grades.append(student_grades_web.get_grades_matrix())
-    student_grades_web.click_go_back()
-driver.quit()
+# saga_url = secrets['SAGA_URL'] or ''
+# if secrets == '': raise Exception('URL not provided')
+# driver = webdriver.Edge()
+# # ACCESS SAGA #
+# driver.get(saga_url)
+# # SIGN IN PAGE #
+# signin_page = Signin(driver,secrets)
+# signin_page.do_login()
+# print(driver.title)
+# # ENTER EVALUATION PAGE #
+# evaluation_page = Evaluationweb(driver)
+# evaluation_page.go_to_teacher_menu()
+# evaluation_page.go_to_groups_menu()
+# evaluation_page.go_to_group(secrets['GROUP_NAME'])
+# # ENTER STUDENT LIST #
+# student_list_page = StudentListWeb(driver)
+# students_list = student_list_page.get_student_list()
+# class_grades = []
+# for i in range(len(students_list)):
+#     student_list_page.click_into_student(students_list[i])
+#     # ENTER STUDENT'S GRADES #
+#     student_grades_web = StudentGradesWeb(driver)
+#     class_grades.append(student_grades_web.get_grades_matrix())
+#     student_grades_web.click_go_back()
+# driver.quit()
+
+# # CONVERTING GRADES INTO JSON #
+# jsonFile = open("grades.json", "w")
+# classgrades_json = json.dumps(class_grades,ensure_ascii=False)
+# jsonFile.write(classgrades_json)
+# jsonFile.close()
+# # CONVERTING STUDENTS INTO JSON #
+# jsonFile = open("students.json", "w")
+# students_json = json.dumps(students_list,ensure_ascii=False)
+# jsonFile.write(students_json)
+# jsonFile.close()
 
 # WHILE TESTING, LOAD DATA FROM FILE #
-# file = open("grades.json")
-# class_grades = json.load(file)
-# file = open("students.json")
-# students_list = json.load(file)
+file = open("grades.json")
+class_grades = json.load(file)
+file = open("students.json")
+students_list = json.load(file)
 ######################################
+
 group_name = secrets['GROUP_NAME'] or 'unnamed'
 classroom = Classroom(group_name)
 for i,student in enumerate(students_list):
