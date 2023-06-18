@@ -11,6 +11,8 @@ class BasicGrade:
     
     def get_grade(self):
         return self.grade
+    def get_hours(self):
+        return self.hours
     
     def compute_grade(self,grade):
         if (grade == 'NP') or (grade == ''): return grade

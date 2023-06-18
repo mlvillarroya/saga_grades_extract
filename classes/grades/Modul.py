@@ -13,8 +13,8 @@ class Modul(BasicGrade):
             self.units[unit_name] = unit
             return unit
     
-    def get_unit_names(self):
+    def get_unit_names_hours(self):
         names = []
         for unit in self.units:
-            names.append(unit)
+            names.append([unit,self.get_unit(unit).get_hours()])
         return names

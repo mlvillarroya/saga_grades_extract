@@ -58,9 +58,9 @@ for i,student in enumerate(students_list):
     student.get_grades(class_grades[i])
 
 myexcel = Myexcel('grades.xlsx',group_name)
-module_unit_names = classroom.get_modules_unit_names_from_first_student()
+module_unit_names_hours = classroom.get_modules_unit_names_from_first_student()
 classroom_students = classroom.get_student_names()
-myexcel.create_module_header_with_modules_units(module_unit_names)
+myexcel.create_module_header_with_modules_units_hours(module_unit_names_hours)
 myexcel.create_first_column_with_student_names(classroom_students)
 myexcel.save_file()
 

@@ -10,16 +10,17 @@ class Myexcel:
         self.ws.title = sheet_name
         self.file_name = file_name
 
-    def create_module_header_with_modules_units(self,module_unit_list):
+    def create_module_header_with_modules_units_hours(self,module_unit_hours_list):
         # ROW 1: MODULES, ROW 2: UNITS #
         col = 2
-        for module,units in module_unit_list:
+        for module,units_hours in module_unit_hours_list:
             start_col = col
             self.ws.cell(row=1, column=col).value = module[:3]
             self.ws.cell(row=1, column=col).comment = Comment(module,'admin')
-            for unit in units:
+            for unit,hours in units_hours:
                 self.ws.cell(row=2, column=col).value = unit[:3]
                 self.ws.cell(row=2, column=col).comment = Comment(unit,'admin')
+                self.ws.cell(row=3, column=col).value = hours
                 col += 1
             end_col = col - 1
             self.ws.merge_cells(start_row=1, start_column=start_col, end_row=1, end_column=end_col)

@@ -36,8 +36,8 @@ class Student:
             names.append(module)
         return names
 
-    def get_module_and_unit_names(self):
+    def get_module_and_unit_names_hours(self):
         names = []
         for module in self.moduls:
-            names.append([module,self.moduls[module].get_unit_names()])
+            names.append([module,self.moduls[module].get_unit_names_hours()])
         return names
