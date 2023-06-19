@@ -1,7 +1,7 @@
 from classes.grades.Unit import Unit
 from classes.grades.BasicGrade import BasicGrade
 
-class Modul(BasicGrade):
+class Module(BasicGrade):
     def __init__(self, name = 'unnamed', grade = '') -> None:
         self.units = {}
         super().__init__(name,grade)

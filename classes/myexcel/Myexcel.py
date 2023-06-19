@@ -35,7 +35,7 @@ class Myexcel:
         self.adjust_col_dimensions(1)
 
     def adjust_col_dimensions(self,col):
-        if Misc.tryparse(col): col_letter = get_column_letter(int(col)) 
+        if Misc.try_parse(col): col_letter = get_column_letter(int(col)) 
         else: col_letter = col       
         dim = 0        
         for cell in self.ws[col_letter]:
@@ -51,7 +51,7 @@ class Myexcel:
             self.ws.cell(row=row + 4, column=col).value = self.compute_passed_grade(grade)
 
     def compute_passed_grade(self,grade):
-        parsed_grade = Misc.tryparse(grade)
+        parsed_grade = Misc.try_parse(grade)
         if not parsed_grade: return 1
         elif int(grade) < 5: return 1
         else: return ''

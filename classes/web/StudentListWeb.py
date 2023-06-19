@@ -12,7 +12,7 @@ class StudentListWeb(Evaluationweb):
             data_cells = self.get_row_data_cells(row)
             if data_cells \
                     and (len(data_cells) >= 3) \
-                    and Misc.tryparse(self.data_cell_content(data_cells[0])):
+                    and Misc.try_parse(self.data_cell_content(data_cells[0])):
                 rows_cleaned.append(self.data_cell_content(data_cells[1]))
         return rows_cleaned
     

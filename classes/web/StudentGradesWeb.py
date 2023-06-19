@@ -18,7 +18,7 @@ class StudentGradesWeb(Evaluationweb):
 
     def get_hours_from_cell(self,cell):
         hours_cell = self.get_element_inside_element_by_xpath(cell,HOURS_XPATH)
-        if (hours_cell) and Misc.tryparse(hours_cell.text): return int(hours_cell.text)
+        if (hours_cell) and Misc.try_parse(hours_cell.text): return int(hours_cell.text)
         else: return 0
 
     def get_grades_matrix(self):

@@ -28,7 +28,7 @@ class Classroom:
         student = self.get_student(student)
         grades = []
         for module,unit_hours in module_unit_names_hours:
-            modul = student.get_modul(module)
+            modul = student.get_module(module)
             for unit,hours in unit_hours:
                 grades.append(modul.get_unit(unit).get_grade())
         return grades

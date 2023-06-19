@@ -18,12 +18,12 @@ class BasicGrade:
         if (grade == 'NP') or (grade == ''): return grade
         if (grade.startswith('A) ')): 
             grade = grade[3:]
-        grade = Misc.tryparse(grade)
+        grade = Misc.try_parse(grade)
         if not grade: raise Exception("Problems parsing grade")
         return grade
     
     def compute_hours(self,hours):
-        hours = Misc.tryparse(hours)
+        hours = Misc.try_parse(hours)
         if not hours: raise Exception("Problems parsing hours")
         return hours
     
