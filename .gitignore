@@ -3,6 +3,5 @@ venv
 __pycache__
 .gitignore
 .vscode/launch.json
-grades.json
-students.json
-grades.xlsx
+*.json
+*.xlsx

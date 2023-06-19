@@ -104,3 +104,14 @@ class Myexcel:
         for i in range(first_data_row,last_data_row + 1):
             cell = self.ws[column_letter + str(i)]
             cell.number_format = '0.00%' 
+
+    def create_passed_units_statistics(self,students_list,module_unit_names_hours,unit_grades_list):
+        self.create_module_header_with_modules_units_hours(module_unit_names_hours)
+        self.create_first_column_with_student_names(students_list)
+        for i,student in enumerate(students_list):
+            self.set_passed_grades(i,unit_grades_list[i])
+        self.adjust_columns_width(5,2)
+        self.set_grades_percent(4,2)
+        self.draw_all_lines()
+        self.freeze_until('B4')
+        self.save_file()

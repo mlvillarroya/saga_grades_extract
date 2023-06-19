@@ -37,3 +37,9 @@ class Classroom:
         for i,student in enumerate(students_list):
             student = self.get_student(student)
             student.set_all_grades(class_grades[i])
+
+    def extract_unit_grades_list(self,students_list,module_unit_names_hours):
+        unit_grades_list = []
+        for i,student in enumerate(students_list):
+            unit_grades_list.append(self.extract_unit_grades(student,module_unit_names_hours))
+        return unit_grades_list

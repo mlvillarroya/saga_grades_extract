@@ -18,5 +18,5 @@ class Misc:
 
     @staticmethod
     def jsonfiletoobject(file_name):
-        file = open(file_name)
+        file = open(file_name,mode='r')
         return json.load(file)

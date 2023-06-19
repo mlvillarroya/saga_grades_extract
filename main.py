@@ -27,15 +27,7 @@ group_name = secrets['GROUP_NAME'] or 'unnamed'
 classroom = Classroom(group_name)
 classroom.build_classroom_structure_from_students_amb_grades(students_list,class_grades)
 module_unit_names_hours = classroom.get_modules_unit_names_hours_from_student(1)
+unit_grades_list = classroom.extract_unit_grades_list(students_list,module_unit_names_hours)
 
-myexcel = Myexcel('grades.xlsx',group_name)
-myexcel.create_module_header_with_modules_units_hours(module_unit_names_hours)
-myexcel.create_first_column_with_student_names(students_list)
-for i,student in enumerate(students_list):
-    student_grades = classroom.extract_unit_grades(student,module_unit_names_hours)
-    myexcel.set_passed_grades(i,student_grades)
-myexcel.adjust_columns_width(5,2)
-myexcel.set_grades_percent(4,2)
-myexcel.draw_all_lines()
-myexcel.freeze_until('B4')
-myexcel.save_file()
+myexcel = Myexcel(group_name + '_statistics.xlsx',group_name)
+myexcel.create_passed_units_statistics(students_list,module_unit_names_hours,unit_grades_list)
