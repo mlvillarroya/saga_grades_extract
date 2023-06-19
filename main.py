@@ -26,7 +26,7 @@ students_list = Misc.jsonfiletoobject('students.json')
 group_name = secrets['GROUP_NAME'] or 'unnamed'
 classroom = Classroom(group_name)
 classroom.build_classroom_structure_from_students_amb_grades(students_list,class_grades)
-module_unit_names_hours = classroom.get_modules_unit_names_hours_from_first_student()
+module_unit_names_hours = classroom.get_modules_unit_names_hours_from_student(1)
 
 myexcel = Myexcel('grades.xlsx',group_name)
 myexcel.create_module_header_with_modules_units_hours(module_unit_names_hours)

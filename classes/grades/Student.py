@@ -1,5 +1,5 @@
 from classes.grades.Modul import Modul
-
+from miscellaneous.Misc import Misc
 class Student:
     def __init__(self,name = 'unnamed') -> None:
         self.name = name
@@ -39,5 +39,16 @@ class Student:
     def get_module_and_unit_names_hours(self):
         names = []
         for module in self.moduls:
-            names.append([module,self.moduls[module].get_unit_names_hours()])
-        return names
+            names.append([self.module_order(module),module,self.moduls[module].get_unit_names_hours()])
+        names.sort()
+        names_sorted = []
+        for order,name,units in names:
+            names_sorted.append([name,units])
+        return names_sorted
+    
+    def module_order(self,module):
+        module_name = self.get_modul(module).get_name()
+        trimmed = module_name[module_name.find('P') + 1 : module_name.find('.')]
+        number = Misc.tryparse(trimmed)
+        if number: return number
+        else: return 0

@@ -15,8 +15,8 @@ class Classroom:
             self.students[student_name] = student
             return student
         
-    def get_modules_unit_names_hours_from_first_student(self):
-        return self.students[list(self.students.keys())[0]].get_module_and_unit_names_hours()
+    def get_modules_unit_names_hours_from_student(self,student_index = 0):
+        return self.students[list(self.students.keys())[student_index]].get_module_and_unit_names_hours()
     
     def get_student_names(self):
         names = []
