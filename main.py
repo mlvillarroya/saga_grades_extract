@@ -15,10 +15,6 @@ students_list,class_grades = web_extractor.take_grades_from_student_page(secrets
 # Misc.object_to_json_file(class_grades,'grades.json')
 # # CONVERTING STUDENTS INTO JSON #
 # Misc.object_to_json_file(students_list,'students.json')
-# jsonFile = open("students.json", "w")
-# students_json = json.dumps(students_list,ensure_ascii=False)
-# jsonFile.write(students_json)
-# jsonFile.close()
 # # WHILE TESTING, LOAD DATA FROM FILE #
 # class_grades = Misc.json_file_to_object('grades.json')
 # students_list = Misc.json_file_to_object('students.json')
