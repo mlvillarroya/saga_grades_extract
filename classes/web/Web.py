@@ -1,5 +1,4 @@
-from selenium import webdriver
-
+from classes.web.Connection import *
 from classes.web.Signin import Signin
 from classes.web.Evaluationweb import Evaluationweb
 from classes.web.StudentListWeb import StudentListWeb
@@ -9,7 +8,8 @@ class Web:
     def take_grades_from_student_page(self,secrets):
         saga_url = secrets['SAGA_URL'] or ''
         if secrets == '': raise Exception('URL not provided')
-        driver = webdriver.Edge()
+        import time 
+        driver = Connection(Browser.Chrome).driver
         # ACCESS SAGA #
         driver.get(saga_url)
         # SIGN IN PAGE #
