@@ -1,4 +1,4 @@
-from classes.web.Evaluationweb import Evaluationweb
+from classes.web.pages.Evaluationweb import Evaluationweb
 from miscellaneous.Misc import Misc
 
 GRADES_TABLE_ID = 'taula_38956696119'

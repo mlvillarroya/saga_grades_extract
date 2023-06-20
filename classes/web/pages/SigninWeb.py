@@ -1,4 +1,4 @@
-from classes.web.Baseweb import Baseweb
+from classes.web.pages.Baseweb import Baseweb
 from selenium.webdriver.common.by import By
 
 USER_BOX_ID = 'user'
@@ -6,7 +6,7 @@ PASS_BOX_ID = 'password'
 SUBMIT_BUTTON_XPATH = '//input[@type="submit"]'
 SIGNIN_TITLE = 'Formulari de login GICAR'
 
-class Signin(Baseweb):
+class SigninWeb(Baseweb):
     def __init__(self,driver,secrets):
         self.secrets = secrets
         super().__init__(driver,SIGNIN_TITLE)

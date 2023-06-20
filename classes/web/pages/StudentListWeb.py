@@ -1,4 +1,4 @@
-from classes.web.Evaluationweb import Evaluationweb
+from classes.web.pages.Evaluationweb import Evaluationweb
 from miscellaneous.Misc import Misc
 
 STUDENT_ROW_XPATH = '//*[@title=\"STUDENT_NAME\"]/parent::*'

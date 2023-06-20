@@ -1,6 +1,4 @@
-from classes.web.Evaluationweb import Evaluationweb
-from constants import Constants
-
+from classes.web.pages.Evaluationweb import Evaluationweb
 
 class ModuleListWeb(Evaluationweb):
     def get_module_name(self,row):

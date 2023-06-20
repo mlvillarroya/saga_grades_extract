@@ -1,19 +1,18 @@
 from classes.web.Connection import *
-from classes.web.Signin import Signin
-from classes.web.Evaluationweb import Evaluationweb
-from classes.web.StudentListWeb import StudentListWeb
-from classes.web.StudentGradesWeb import StudentGradesWeb
+from classes.web.pages.SigninWeb import SigninWeb
+from classes.web.pages.Evaluationweb import Evaluationweb
+from classes.web.pages.StudentListWeb import StudentListWeb
+from classes.web.pages.StudentGradesWeb import StudentGradesWeb
 
 class Web:
     def take_grades_from_student_page(self,secrets):
         saga_url = secrets['SAGA_URL'] or ''
         if secrets == '': raise Exception('URL not provided')
-        import time 
         driver = Connection(Browser.Chrome).driver
         # ACCESS SAGA #
         driver.get(saga_url)
         # SIGN IN PAGE #
-        signin_page = Signin(driver,secrets)
+        signin_page = SigninWeb(driver,secrets)
         signin_page.do_login()
         print(driver.title)
         # ENTER EVALUATION PAGE #

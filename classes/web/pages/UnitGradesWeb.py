@@ -1,4 +1,4 @@
-from classes.web.Evaluationweb import Evaluationweb
+from classes.web.pages.Evaluationweb import Evaluationweb
 
 GRADES_XPATH = "(((//table)[4]//tr)[4]//input[@type='text'])"
 
